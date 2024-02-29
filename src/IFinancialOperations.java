@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.concurrent.TransferQueue;
+
 public interface IFinancialOperations {
-    void addTransaction();
+    void addTransaction(ITransaction i);
 }
+
+

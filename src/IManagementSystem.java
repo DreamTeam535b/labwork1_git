@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public interface IManagementSystem{
     //adding transactions
-    void addIncomeTransaction(); //plus money
-    void addExpenseTransaction();//minus money
+    boolean addIncomeTransaction(ITransaction i); //plus money
+    boolean addExpenseTransaction(ITransaction i);//minus money
 
     //get info about transactions and balance
-    void getAllTransactionsInfo(); //all transactions
+    ArrayList<ITransaction> getAllTransactionsInfo(); //all transactions
 
     //get amount
     double getIncomeInfo(); //all income amount
@@ -21,3 +21,4 @@ public interface IManagementSystem{
     String viewIncomeInfo();//income transactions and amount of income
     String viewExpenseInfo();//expense transactions and amount of expense
 }
+
