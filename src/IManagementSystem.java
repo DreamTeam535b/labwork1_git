@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public interface ManagementSystem{
+public interface IManagementSystem{
     //adding transactions
     void addIncomeTransaction(); //plus money
     void addExpenseTransaction();//minus money
@@ -13,8 +13,8 @@ public interface ManagementSystem{
     double getExpenseInfo(); //all expense amount
 
     //get transactions info
-    ArrayList<Transaction> getIncomeTransactionsInfo(); //all income transactions
-    ArrayList<Transaction> getExpenseTransactionsInfo(); //all expense transactions
+    ArrayList<ITransaction> getIncomeTransactionsInfo(); //all income transactions
+    ArrayList<ITransaction> getExpenseTransactionsInfo(); //all expense transactions
 
     //output info
     String viewAllTransfersInfo(); //all transfers info

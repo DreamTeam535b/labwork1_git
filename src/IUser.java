@@ -1,3 +1,3 @@
-public interface User {
+public interface IUser {
     double getUserBalance();//info about balance
 }

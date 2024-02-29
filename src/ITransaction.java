@@ -3,7 +3,7 @@ import com.sun.source.tree.BinaryTree;
 import java.util.ArrayList;
 import java.util.Date;
 
-public interface Transaction {
+public interface ITransaction {
     double getAmount();
     Date getDate();
     String getDescription();
