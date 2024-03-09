@@ -5,17 +5,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        User user = new User("DreamTeam");
+        UsersAccounts users = new UsersAccounts();
+
+        User user = null;
 
         Scanner scanner = new Scanner(System.in);
 
         while (true){
-            System.out.println("Your balance = " + user.getUserBalance());
+            if (user != null) {
+                System.out.println("You are logged in!\nYour balance = " + user.getUserBalance());
+            }
             System.out.println("type \"help\" to see other commands");
             switch (scanner.nextLine().toLowerCase()){
                 case "help":
                     StringBuilder sb = new StringBuilder();
                     sb.append("\"help\" - shows available commands.\n");
+                    sb.append("\"create\" - creates an account.\n");
+                    sb.append("\"login\" - logs into account.\n");
                     sb.append("\"submit\" - submit a transaction.\n");
                     sb.append("\"receive\" - receive a transaction.\n");
                     sb.append("\"show all\" - show all transactions and differences.\n");
@@ -23,7 +29,45 @@ public class Main {
                     sb.append("\"show income\" - show profit.\n");
                     System.out.println(sb.toString());
                     break;
+                case "create":
+                {
+                    String userlogin;
+                    String userpassword;
+                    System.out.print("Enter login: ");
+                    userlogin = scanner.nextLine();
+                    System.out.print("Enter password: ");
+                    userpassword = scanner.nextLine();
+                    try {
+                        users.createUser(userlogin, userpassword);
+                    }
+                    catch (Exception ex){
+                        System.out.println(ex.toString());
+                    }
+                    break;
+                }
+                case "login":
+                {
+                    String userlogin;
+                    String userpassword;
+                    System.out.print("Enter login: ");
+                    userlogin = scanner.nextLine();
+                    System.out.print("Enter password: ");
+                    userpassword = scanner.nextLine();
+                    try {
+                        user = users.getUser(userlogin, userpassword);
+                    }
+                    catch (Exception ex){
+                        System.out.println(ex.toString());
+                    }
+                    break;
+                }
+
                 case "submit": {
+                    if (user == null)
+                    {
+                        System.out.println("you are not logged in!");
+                        break;
+                    }
                     String amountStr;
                     double amount;
                     String description;
@@ -51,6 +95,11 @@ public class Main {
                     break;
                 }
                 case "receive": {
+                    if (user == null)
+                    {
+                        System.out.println("you are not logged in!");
+                        break;
+                    }
                     String amountStr;
                     double amount;
                     String description;
@@ -78,14 +127,29 @@ public class Main {
                     break;
                 }
                 case "show all":{
+                    if (user == null)
+                    {
+                        System.out.println("you are not logged in!");
+                        break;
+                    }
                     System.out.println(user.viewAllTransfersInfo());
                 }
                     break;
                 case "show expense": {
+                    if (user == null)
+                    {
+                        System.out.println("you are not logged in!");
+                        break;
+                    }
                     System.out.println(user.viewExpenseInfo());
                     break;
                 }
                 case "show income": {
+                    if (user == null)
+                    {
+                        System.out.println("you are not logged in!");
+                        break;
+                    }
                     System.out.println(user.viewIncomeInfo());
                     break;
                 }

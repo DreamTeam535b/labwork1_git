@@ -9,6 +9,9 @@ public class User extends ManagementSystem implements IUser {
         this(0, userName);
     }
 
+    public String getUserName() {
+        return userName;
+    }
 
     public boolean submitTransaction(double amount, String description, String destination){
 
@@ -35,3 +38,5 @@ public class User extends ManagementSystem implements IUser {
         return balance;
     }
 }
+
+
